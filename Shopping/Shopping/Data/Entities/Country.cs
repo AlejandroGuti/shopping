@@ -10,5 +10,10 @@ namespace Shopping.Data.Entities
         [Required(ErrorMessage ="field {0} is mandatory.")]
         public string Name { get; set; }
 
+        public ICollection<State> States { get; set; }
+        [Display(Name= "StatesCount")]
+
+        public int StatesNumber => States == null ? 0 : States.Count;
+
     }
 }
