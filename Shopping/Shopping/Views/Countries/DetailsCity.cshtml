@@ -1,0 +1,43 @@
+﻿@model Shopping.Data.Entities.City
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+
+<h1>Details</h1>
+
+<div>
+<partial name ="_CityDetails" />
+</div>
+<div>
+    <a asp-action="EditCity" asp-route-id="@Model?.Id" class="btn btn-outline-info">Edit City</a> 
+    <a asp-action="AddCity" asp-route-id="@Model?.Id" class="btn btn-outline-warning">Add City</a> 
+    <a asp-action="DetailsState" asp-route-id="@Model?.State.Id" class="btn btn-outline-success">Back to List</a>
+</div>
+<hr />
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/ingles.json"
+                },
+                "aLengthMenu": [
+                    [25, 50, 100, 200, -1],
+                    [25, 50, 100, 200, "Todos"]
+                ]
+            });
+        });
+    </script>
+    }
