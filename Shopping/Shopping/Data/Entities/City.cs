@@ -10,5 +10,6 @@ namespace Shopping.Data.Entities
         [Required(ErrorMessage = "field {0} is mandatory.")]
         public string Name { get; set; }
         public State State { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }
