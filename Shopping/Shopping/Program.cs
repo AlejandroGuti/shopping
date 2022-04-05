@@ -28,6 +28,11 @@ builder.Services.AddIdentity<User, IdentityRole>(cfg =>
     cfg.Password.RequireUppercase = false;
     //cfg.Password.RequiredLength = 0;
 }).AddEntityFrameworkStores<DataContext>();
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/Account/NotAuthorized";
+    option.AccessDeniedPath = "/Account/NotAuthorized";
+});
 
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -57,6 +62,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithReExecute("/error/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
