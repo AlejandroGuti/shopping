@@ -17,7 +17,7 @@ namespace Shopping.Data.Entities
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [MaxLength(500, ErrorMessage = "The field {0} should have max {1} characters.")]
+        [MaxLength(50, ErrorMessage = "The field {0} should have max {1} characters.")]
         [Required(ErrorMessage = "The field {0} it's mandatory.")]
         public string LastName { get; set; }
 
@@ -34,8 +34,8 @@ namespace Shopping.Data.Entities
 
         [Display(Name = "Picture")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:7059/images/noimage.png"
-            : $"https://shoppingzulu.blob.core.windows.net/users/{ImageId}";
+            ? $"https://localhost:7259/images/NoImage.png"
+            : $"https://agshopping.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
