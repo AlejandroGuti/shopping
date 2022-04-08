@@ -6,6 +6,7 @@ using Shopping.Data.Entities;
 using Shopping.Enum;
 using Shopping.Helpers;
 using Shopping.Models;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Shopping.Controllers
 {
@@ -38,7 +39,7 @@ namespace Shopping.Controllers
         {
             if (ModelState.IsValid)
             {
-                Microsoft.AspNetCore.Identity.SignInResult result = await _userHelper.LoginAsync(model);
+                SignInResult result = await _userHelper.LoginAsync(model);
                 if (result.Succeeded)
                 {
 
@@ -46,7 +47,13 @@ namespace Shopping.Controllers
 
                 }
 
-                ModelState.AddModelError(string.Empty, "Email or password incorrect.");
+                if (result.IsLockedOut)
+                {
+                    ModelState.AddModelError(string.Empty, "Your user is locked, try again in 5 minutes");
+                }else
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong email or password");
+                }
             }
 
             return View(model);

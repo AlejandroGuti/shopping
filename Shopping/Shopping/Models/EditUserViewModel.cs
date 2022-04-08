@@ -41,7 +41,7 @@ namespace Shopping.Models
             : $"https://agshopping.blob.core.windows.net/users/{ImageId}";
         
         [Display(Name = "Image")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
         [Display(Name = "Country")]
         [Range(1,int.MaxValue, ErrorMessage = "You should select almost 1 {0}")]
