@@ -30,11 +30,15 @@
             <div class="form-group mt-2">
                 <input type="submit" value="Iniciar Sesión" class="btn btn-outline-primary" />
                 <a asp-action="Register" class="btn btn-outline-secondary">Registrar Nuevo Usuario</a>
+                <a asp-action="RecoverPassword" class="btn btn-link">Did you forget the pass?</a>
             </div>
+
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
